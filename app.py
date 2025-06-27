@@ -24,5 +24,7 @@ def get_domain_info():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    print("Starting Flask application...")
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 8080))  # Use Render's PORT environment variable
+    host = '0.0.0.0'  # Listen on all interfaces
+    print(f"Starting Flask application on port {port}...")
+    app.run(host=host, port=port, debug=False)  # Disable debug mode in production
